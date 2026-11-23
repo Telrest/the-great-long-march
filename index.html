@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19201e">
+  <title>长征模拟器 · 1934—1936</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/photos.js"></script>
+  <script defer src="js/journey-data.js"></script>
+  <script defer src="js/journey.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <main id="app">
+    <section class="cover" id="title-screen" aria-labelledby="cover-title">
+      <div class="cover-content">
+        <p class="cover-date">1934 — 1936</p>
+        <h1 id="cover-title">长征模拟器</h1>
+        <p class="cover-intro">从中央苏区出发，沿着长征的足迹，走到各路红军胜利会师。</p>
+        <button id="start" type="button" class="button primary">展开长征地图 <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="cover-art-caption">历史情境插画 · 于都出发</p>
+    </section>
+
+    <section id="route-overview" class="overview" hidden aria-labelledby="overview-title">
+      <header class="overview-header">
+        <div>
+          <p class="overview-date">1934—1936</p>
+          <h1 id="overview-title" tabindex="-1">长征路线总览</h1>
+        </div>
+        <button class="sound-button" type="button" data-sound></button>
+      </header>
+      <figure class="overview-map">
+        <canvas id="overview-map" role="img" aria-label="从于都经湘江、遵义、雪山草地至吴起镇，以及各路红军会师的路线示意"></canvas>
+        <div id="overview-map-controls" class="map-controls"></div>
+        <figcaption>路线示意 · 拖动查看，滚轮或双指缩放</figcaption>
+      </figure>
+      <footer class="overview-footer">
+        <ul id="map-key" class="map-key" aria-label="路线图例"></ul>
+        <button id="begin-journey" class="button primary" type="button">沿路线出发 <span aria-hidden="true">→</span></button>
+      </footer>
+    </section>
+
+    <section class="reader" id="scene" hidden aria-labelledby="scene-title">
+      <header class="reader-header">
+        <button type="button" id="home" class="home-button" aria-label="返回长征模拟器首页">长征模拟器</button>
+        <div class="reader-progress">
+          <span id="chapter-name"></span>
+          <input id="progress" type="range" min="1" step="1" value="1"
+                 aria-label="跳转主线场景" title="拖动或点击跳转到任意一幕">
+          <span id="page-number"></span>
+          <button class="sound-button" type="button" data-sound></button>
+        </div>
+      </header>
+      <div id="frame"></div>
+    </section>
+
+    <noscript>请启用 JavaScript 后重新打开本页。</noscript>
+  </main>
+</body>
+</html>
