@@ -6,11 +6,13 @@
   <meta name="theme-color" content="#19201e">
   <title>长征模拟器 · 1934—1936</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/share.css">
   <script defer src="js/data.js"></script>
   <script defer src="js/photos.js"></script>
   <script defer src="js/journey-data.js"></script>
   <script defer src="js/journey.js"></script>
   <script defer src="js/app.js"></script>
+  <script defer src="js/share.js"></script>
 </head>
 <body>
   <main id="app">
@@ -45,7 +47,10 @@
 
     <section class="reader" id="scene" hidden aria-labelledby="scene-title">
       <header class="reader-header">
-        <button type="button" id="home" class="home-button" aria-label="返回长征模拟器首页">长征模拟器</button>
+        <div class="reader-brand">
+          <button type="button" id="home" class="home-button" aria-label="返回长征模拟器首页">长征模拟器</button>
+          <button type="button" id="share-website" class="share-button" aria-haspopup="dialog" aria-controls="share-dialog">分享网站</button>
+        </div>
         <div class="reader-progress">
           <span id="chapter-name"></span>
           <input id="progress" type="range" min="1" step="1" value="1"
@@ -59,5 +64,16 @@
 
     <noscript>请启用 JavaScript 后重新打开本页。</noscript>
   </main>
+  <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title" aria-describedby="share-instructions">
+    <div class="share-content">
+      <form method="dialog" class="share-close">
+        <button type="submit" autofocus aria-label="关闭分享窗口">×</button>
+      </form>
+      <h2 id="share-title">分享《长征模拟器》</h2>
+      <p id="share-instructions">用手机相机扫码，打开线上版。</p>
+      <img src="assets/img/share-website.png" width="720" height="720" alt="《长征模拟器》线上版二维码">
+      <a href="https://telrest.github.io/the-great-long-march/" target="_blank" rel="noopener noreferrer">直接打开线上版 ↗</a>
+    </div>
+  </dialog>
 </body>
 </html>
