@@ -667,16 +667,25 @@
     title.tabIndex = -1;
     panel.append(title, element('p', 'victory-film-credit', '央视新闻 · 纪念红军长征胜利90周年 MV'));
 
-    const watch = element('a', 'primary film-link', '在哔哩哔哩观看《万里长风》 ↗');
+    const playerCard = element('div', 'film-player-card');
+    const player = element('iframe', 'film-player');
+    player.src = 'https://player.bilibili.com/player.html?bvid=BV1LrJR6aEh6&autoplay=0&poster=1&danmaku=0';
+    player.title = '哔哩哔哩播放器 · 万里长风';
+    player.allowFullscreen = true;
+
+    const playerActions = element('div', 'film-player-actions');
+    const watch = element('a', 'button film-link', '在哔哩哔哩观看 ↗');
     watch.href = 'https://www.bilibili.com/video/BV1LrJR6aEh6/';
     watch.target = '_blank';
     watch.rel = 'noopener noreferrer';
+    playerActions.append(element('p', '', '站内无法播放时，可打开原视频。'), watch);
+    playerCard.append(player, playerActions);
 
     const actions = element('div', 'victory-film-actions');
     const back = button('← 回到会师', 'secondary', () => render('story', true, false));
     const continueReading = button('查看长征胜利的意义 →', 'secondary film-continue', () => renderEpilogue(0));
     actions.append(back, continueReading);
-    panel.append(watch, actions);
+    panel.append(playerCard, actions);
 
     frame.replaceChildren(panel);
     document.title = '万里长风 · 长征模拟器';

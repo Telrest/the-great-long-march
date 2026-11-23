@@ -822,7 +822,7 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 }
 
 .victory-film {
-  width: min(1120px, calc(100% - 32px));
+  width: min(920px, calc(100% - 32px));
   margin: 0 auto;
   padding: clamp(20px, 4vh, 36px) 0;
 }
@@ -835,11 +835,49 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 .victory-film h1:focus { outline: none; }
 .victory-film-credit { margin: 0 0 16px; color: #dbc6a5; font-size: .82rem; }
 
-.victory-film .film-link {
+.film-player-card {
+  overflow: hidden;
+  border: 1px solid #4b4033;
+  border-radius: 14px;
+  background: #151411;
+}
+
+.film-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #0e0e0d;
+}
+
+.film-player-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 20px;
+  padding: 12px clamp(12px, 2.5vw, 22px);
+  border-top: 1px solid #4b4033;
+}
+
+.film-player-actions p {
+  margin: 0;
+  color: #dbc6a5;
+  font-size: .84rem;
+}
+
+.film-link {
   display: inline-flex;
   align-items: center;
+  border-radius: 24px;
+  background: #f6e8cf;
+  color: #282016;
+  font-weight: 700;
   text-decoration: none;
 }
+
+.film-link:hover { background: #e5c99e; }
+.film-link:focus-visible { outline-color: #f6e8cf; }
 
 .victory-film-actions {
   display: flex;
@@ -864,6 +902,7 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
   .overview-date { font-size: .73rem; }
   .overview-footer .primary { flex: 1 0 100%; margin: 3px 0 0; }
   .map-key { gap: 8px 12px; font-size: .75rem; }
+  .film-link { width: 100%; justify-content: center; }
   #progress { width: clamp(52px, calc(100vw - 264px), 105px); }
 }
 
