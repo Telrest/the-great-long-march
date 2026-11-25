@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Ma Shan Zheng";
+  src: url("../assets/fonts/ma-shan-zheng-poetry.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+.scene-poem {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-left: 2px solid #aa6a4d;
+  background: #f6ecdbcf;
+  color: #52291f;
+}
+
+.scene-poem-lines {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 6px;
+  font: 400 clamp(1.38rem, 2.3vw, 1.85rem)/1.26 "Ma Shan Zheng", KaiTi, var(--serif);
+}
+
+.scene-poem figcaption,
+.epilogue-poem-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  font-size: .82rem;
+}
+
+.scene-poem a,
+.epilogue-poem-credit a {
+  color: inherit;
+  text-underline-offset: .19em;
+}
+
+.scene-poem-note {
+  margin: 6px 0 0;
+  font-size: .84rem;
+  line-height: 1.6;
+}
+
+.film .scene-poem {
+  border-color: #c38162;
+  background: #332922dc;
+  color: #f3debe;
+}
+
+.epilogue-poem {
+  position: absolute;
+  z-index: -1;
+  inset: 9px 33% auto auto;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: .3em;
+  margin: 0;
+  color: #ffe0a3;
+  opacity: .74;
+  text-shadow: 0 1px 6px #3a180ddd;
+  font: 400 clamp(.85rem, 2.45vw, 1.48rem)/1 "Ma Shan Zheng", KaiTi, var(--serif);
+  pointer-events: none;
+}
+
+.epilogue-poem span {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.epilogue-poem-credit {
+  justify-content: space-between;
+  margin: 0;
+  padding: 9px clamp(20px, 5vw, 64px);
+  border-bottom: 1px solid #cdb798;
+  background: #e7d6b9;
+  color: #633924;
+}

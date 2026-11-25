@@ -141,6 +141,29 @@
     return details;
   }
 
+  function poemLines(poem, className) {
+    const quote = element('blockquote', className);
+    quote.cite = poem.source;
+    for (const line of poem.lines) quote.append(element('span', '', line));
+    return quote;
+  }
+
+  function poemSource(label, url) {
+    const link = element('a', '', label);
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    return link;
+  }
+
+  function makeScenePoem(poem) {
+    const figure = element('figure', 'scene-poem');
+    const credit = element('figcaption');
+    credit.append('毛泽东《' + poem.title + '》节选', poemSource('出处 ↗', poem.source));
+    figure.append(poemLines(poem, 'scene-poem-lines'), credit, element('p', 'scene-poem-note', poem.note));
+    return figure;
+  }
+
   function photoCaption([title, description, author, license]) {
     const label = element('span', '', '资料照片 · ' + description);
     const attribution = element('span', 'photo-attribution');
@@ -574,6 +597,9 @@
       units.push({ node: scene.timeline ? decision : undefined, voice: scene.id + '-question', delay: 0 });
     }
 
+    const poem = JOURNEY_POEMS[scene.id];
+    if (poem && !isFailure) panel.append(makeScenePoem(poem));
+
     const allowSources = !isFailure && !question;
     const sources = allowSources ? sourceList(scene.sources) : null;
     if (sources) {
@@ -714,7 +740,11 @@
     const portrait = element('img', 'epilogue-portrait');
     portrait.src = 'assets/epilogue/mao-1936.jpg';
     portrait.alt = '';
-    hero.append(flagFrame, portrait, heading);
+    hero.append(flagFrame, portrait, heading, poemLines(LONG_MARCH_POEM, 'epilogue-poem'));
+
+    const poemCredit = element('p', 'epilogue-poem-credit');
+    poemCredit.append('毛泽东《' + LONG_MARCH_POEM.title + '》节选',
+      poemSource('查看国家档案局公布的手迹 ↗', LONG_MARCH_POEM.source));
 
     const card = element('article', 'epilogue-slide');
     const body = element('div', 'epilogue-body');
@@ -764,7 +794,7 @@
       portrait: ['1936 年毛泽东肖像 · 埃德加·斯诺摄，《人民画报》刊载', 'https://commons.wikimedia.org/wiki/File:1967-10_红军时期的毛泽东.jpg'],
     }, '背景图片出处');
     credits.classList.add('epilogue-credits');
-    frame.replaceChildren(hero, card, speech, navigation, credits);
+    frame.replaceChildren(hero, poemCredit, card, speech, navigation, credits);
     document.title = slide.title + ' · 长征模拟器';
     window.scrollTo(0, 0);
     (index === 0 ? heading : title).focus({ preventScroll: true });
