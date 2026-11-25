@@ -633,6 +633,18 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 
 .scene-gallery .scene-art.current-art { opacity: 1; }
 .scene-gallery .scene-art, .picture-lift .lift-art { transform: scale(var(--art-zoom, 1)); }
+.scene-gallery::before {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  background: var(--gallery-fill, none) center / cover no-repeat;
+  filter: blur(20px) brightness(.42) saturate(.8);
+  pointer-events: none;
+}
+
+.scene-gallery .scene-art[data-exhibit],
+.picture-lift .lift-art[data-exhibit] { object-fit: contain; }
+
 .scene-gallery .scene-art:is([data-photo="chain"], [data-photo="relics"], [data-photo="belts"], [data-photo="sichuan"]) {
   object-fit: contain;
   background: #242620;

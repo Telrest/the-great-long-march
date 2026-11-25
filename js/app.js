@@ -180,6 +180,19 @@
     return [label, attribution];
   }
 
+  function exhibitCaption(exhibit) {
+    const label = element('span', '', exhibit.type + ' · ' + exhibit.title);
+    const credit = element('span', 'photo-attribution');
+    if (exhibit.author) credit.append(exhibit.author, ' · ');
+    credit.append(poemSource('图源 ↗', exhibit.source));
+    if (exhibit.license) {
+      credit.append(' · ', exhibit.licenseUrl
+        ? poemSource(exhibit.license, exhibit.licenseUrl)
+        : exhibit.license);
+    }
+    return [label, credit];
+  }
+
   function makeVisual(pictures, isFailure = false) {
     const figure = element('figure', 'visual scene-gallery');
     const backdrop = element('div', 'story-backdrop');
@@ -194,14 +207,18 @@
     let visible = false;
     let paused = reduceMotion.matches;
 
-    for (const { bg, art, photo, position = 'center', zoom = 1 } of pictures) {
+    for (const { bg, art, photo, exhibit, position = 'center', zoom = 1 } of pictures) {
       const picture = element('img', 'scene-art');
       if (photo) {
-        picture.src = 'assets/photo/' + photo + '.jpg';
+        picture.dataset.src = 'assets/photo/' + photo + '.jpg';
         picture.alt = PHOTO_LIBRARY[photo][1];
         picture.dataset.photo = photo;
+      } else if (exhibit) {
+        picture.dataset.src = exhibit.src;
+        picture.alt = exhibit.title;
+        picture.dataset.exhibit = '';
       } else {
-        picture.src = 'assets/img/' + bg;
+        picture.dataset.src = 'assets/img/' + bg;
         picture.alt = art;
       }
       picture.decoding = 'async';
@@ -217,16 +234,34 @@
       backdrop.append(backgroundImage);
     }
 
+    function preload(index) {
+      const picture = images[(index + pictures.length) % pictures.length];
+      if (!picture.hasAttribute('src')) picture.src = picture.dataset.src;
+    }
+
     function select(index) {
       current = (index + pictures.length) % pictures.length;
+      const { photo, art, exhibit } = pictures[current];
+      preload(current);
+      const backgroundImage = backdropImages[current];
+      if (!backgroundImage.hasAttribute('src')) backgroundImage.src = images[current].src;
+      if (exhibit) {
+        figure.style.setProperty('--gallery-fill', 'url("' + images[current].src + '")');
+      } else {
+        figure.style.removeProperty('--gallery-fill');
+      }
+      if (pictures.length > 1) {
+        preload(current + 1);
+        preload(current - 1);
+      }
       for (const [position, picture] of images.entries()) {
         const selected = position === current;
         picture.classList.toggle('current-art', selected);
         picture.setAttribute('aria-hidden', String(!selected));
         backdropImages[position].classList.toggle('current-backdrop', selected);
       }
-      const { photo, art } = pictures[current];
       if (photo) caption.replaceChildren(...photoCaption(PHOTO_LIBRARY[photo]));
+      else if (exhibit) caption.replaceChildren(...exhibitCaption(exhibit));
       else caption.textContent = (isFailure ? '情境推演插画 · ' : '历史情境插画 · ') + art;
       indicator.textContent = (current + 1) + ' / ' + pictures.length;
     }
@@ -521,12 +556,7 @@
     const content = isStory ? scene : scene[mode];
     const question = isStory && scene.choices;
     const narrated = isStory && !question;
-    const pictures = [isFailure ? content : scene];
-    if (!isFailure) {
-      for (const photo of SCENE_PHOTOS[scene.id]) pictures.push({ photo });
-    }
-    const closeup = SCENE_CLOSEUPS[scene.id];
-    if (!isFailure && closeup) pictures.push({ bg: scene.bg, ...closeup });
+    const pictures = isFailure ? [content] : SCENE_GALLERY[scene.id];
     const gallery = makeVisual(pictures, isFailure);
     activeGallery = gallery;
     const alreadyRead = isStory && visited.has(scene.id);
