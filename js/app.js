@@ -794,7 +794,13 @@
       portrait: ['1936 年毛泽东肖像 · 埃德加·斯诺摄，《人民画报》刊载', 'https://commons.wikimedia.org/wiki/File:1967-10_红军时期的毛泽东.jpg'],
     }, '背景图片出处');
     credits.classList.add('epilogue-credits');
-    frame.replaceChildren(hero, poemCredit, card, speech, navigation, credits);
+    const content = element('div', 'epilogue-content');
+    content.append(hero, poemCredit, card, speech, navigation, credits);
+    frame.replaceChildren(
+      poemLines(LONG_MARCH_POEM, 'epilogue-poem-side'),
+      content,
+      poemLines(LONG_MARCH_POEM_CLOSING, 'epilogue-poem-side'),
+    );
     document.title = slide.title + ' · 长征模拟器';
     window.scrollTo(0, 0);
     (index === 0 ? heading : title).focus({ preventScroll: true });

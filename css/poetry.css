@@ -62,7 +62,8 @@
   pointer-events: none;
 }
 
-.epilogue-poem span {
+.epilogue-poem span,
+.epilogue-poem-side span {
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
@@ -74,4 +75,47 @@
   border-bottom: 1px solid #cdb798;
   background: #e7d6b9;
   color: #633924;
+}
+
+.epilogue-poem-side {
+  display: none;
+}
+
+@media (min-width: 1160px) {
+  #frame[data-mode="epilogue"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 860px) minmax(0, 1fr);
+    gap: clamp(14px, 2vw, 32px);
+    width: min(1360px, calc(100% - 40px));
+    background: transparent;
+  }
+
+  .epilogue-content {
+    min-width: 0;
+    background: #efe4cd;
+  }
+
+  .epilogue-poem {
+    display: none;
+  }
+
+  .epilogue-poem-side {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    justify-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: .32em;
+    width: min(100%, 174px);
+    margin: 42px 0 0;
+    padding: 30px 4px 34px;
+    border: 1px solid #ddac7559;
+    background: linear-gradient(170deg, #482719ee, #341a15bd);
+    color: #f4d1a2;
+    text-shadow: 0 2px 5px #25100e;
+    font: 400 clamp(1.8rem, 2.9vw, 2.56rem)/1 "Ma Shan Zheng", KaiTi, var(--serif);
+    letter-spacing: .08em;
+  }
 }

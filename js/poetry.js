@@ -30,3 +30,8 @@ const LONG_MARCH_POEM = {
   lines: ['红军不怕远征难，', '万水千山只等闲。'],
   source: 'https://www.saac.gov.cn/zt/2013-10/19/content_29044.htm',
 };
+
+const LONG_MARCH_POEM_CLOSING = {
+  lines: ['更喜岷山千里雪，', '三军过后尽开颜。'],
+  source: 'https://www.cppcc.gov.cn/zxxw/yw/tpyw/202610/t20261020_908416.html',
+};
