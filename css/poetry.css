@@ -48,21 +48,13 @@
 }
 
 .epilogue-poem {
-  position: absolute;
-  z-index: -1;
-  inset: 9px 33% auto auto;
   display: flex;
-  flex-direction: row-reverse;
-  gap: .3em;
-  margin: 0;
-  color: #ffe0a3;
-  opacity: .74;
-  text-shadow: 0 1px 6px #3a180ddd;
-  font: 400 clamp(.85rem, 2.45vw, 1.48rem)/1 "Ma Shan Zheng", KaiTi, var(--serif);
-  pointer-events: none;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  margin: 2px 0;
+  font: 400 1.16rem/1.45 "Ma Shan Zheng", KaiTi, var(--serif);
 }
 
-.epilogue-poem span,
 .epilogue-poem-side span {
   writing-mode: vertical-rl;
   text-orientation: upright;

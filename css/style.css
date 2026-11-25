@@ -35,9 +35,9 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
   align-items: end;
   color: #fff4df;
   background:
-    linear-gradient(90deg, rgba(17, 20, 19, .86), rgba(17, 20, 19, .50) 48%, transparent 82%),
-    linear-gradient(0deg, rgba(17, 20, 19, .58), transparent 55%),
-    url("../assets/img/bg-01-departure.jpg") 50% 44% / cover no-repeat,
+    linear-gradient(90deg, #111413aa, #11141362 43%, transparent 74%),
+    linear-gradient(0deg, #111413a1, transparent 50%),
+    url("../assets/img/bg-ruijin-cover.jpg") center / cover no-repeat,
     var(--dark);
 }
 
@@ -435,7 +435,7 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
   .cover {
     background:
       linear-gradient(0deg, rgba(17, 20, 19, .91), rgba(17, 20, 19, .42) 60%, transparent),
-      url("../assets/img/bg-01-departure.jpg") 38% 50% / cover no-repeat,
+      url("../assets/img/bg-ruijin-cover.jpg") 68% center / cover no-repeat,
       var(--dark);
   }
 }
@@ -701,65 +701,27 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 }
 
 .reader:has(#frame[data-mode="epilogue"]) {
-  background: linear-gradient(180deg, #341913, #56281d 24rem, #eadcc1 60rem, var(--paper));
+  background: linear-gradient(180deg, #29100e, #54251c 25rem, #91705d 48rem, #c6ad91);
 }
 
 .epilogue-hero {
-  position: relative;
-  isolation: isolate;
   display: flex;
   align-items: end;
-  min-height: clamp(168px, 27vw, 248px);
-  overflow: hidden;
-  padding: 20px clamp(19px, 5vw, 62px) clamp(20px, 4vw, 40px);
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-height: 390px;
+  padding: clamp(14px, 2.8vw, 26px) clamp(19px, 5vw, 62px);
   border-bottom: 3px solid #ba9361;
-  background: radial-gradient(ellipse at 35% 0%, #a6422a, #6a221a 53%, #321612);
-}
-
-.epilogue-flag {
-  position: absolute;
-  z-index: -2;
-  top: -5%;
-  left: -4%;
-  width: min(64%, 450px);
-  aspect-ratio: 276 / 155;
-  opacity: .88;
-}
-
-.epilogue-flag img {
-  position: absolute;
-  top: -306%;
-  left: -138.4%;
-  width: 463.8%;
-  max-width: none;
-  clip-path: polygon(30.45% 64.08%, 49.15% 56.08%, 50.8% 66.08%, 31.5% 73.35%);
-}
-
-.epilogue-portrait {
-  position: absolute;
-  z-index: -2;
-  inset: 0 0 0 auto;
-  width: 45%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  mask-image: linear-gradient(to right, transparent, #000 56%);
-  filter: sepia(.14);
-}
-
-.epilogue-hero::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(0deg, #321210ed, #4c160e50 46%, transparent 77%);
-  pointer-events: none;
+  background:
+    linear-gradient(0deg, #210f0be6, #210f0b60 20%, transparent 40%),
+    url("../assets/epilogue/long-march-calligraphy.jpg") center top / cover no-repeat,
+    #371610;
 }
 
 .epilogue-hero-title {
   margin: 0;
   color: #fff1d3;
-  font: 700 clamp(1.75rem, 6vw, 3.85rem)/1.15 var(--serif);
+  font: 700 clamp(1.75rem, 5vw, 3.55rem)/1.15 var(--serif);
   text-shadow: 0 2px 8px #29110e;
 }
 
@@ -807,18 +769,17 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 }
 
 .epilogue-page { color: #645746; font-variant-numeric: tabular-nums; }
-.epilogue-credits {
-  margin: 0;
-  padding: 0 clamp(14px, 3vw, 26px) 14px;
-}
 .reader:has(#frame[data-mode="epilogue"]) #chapter-name { display: inline; white-space: nowrap; }
 .reader:has(#frame[data-mode="victory-film"]) .sound-button { display: none; }
 @keyframes epilogue-in { from { opacity: 0; } to { opacity: 1; } }
 
 #frame[data-mode="victory-film"] {
   min-height: calc(100svh - 66px);
-  background: #161d1a;
-  color: #f3e6ce;
+  background:
+    linear-gradient(180deg, #21130ddb, #21130d50 24%, #21130d60 73%, #21130ddd),
+    url("../assets/epilogue/signature-wall.jpg") center / cover no-repeat,
+    #241913;
+  color: #fff5e5;
 }
 
 .victory-film {
@@ -887,7 +848,7 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
   padding-top: 12px;
 }
 
-.victory-film .secondary { color: #f3e6ce; border-color: #897558; }
+.victory-film .secondary { color: #fff5e5; border-color: #aa876d; background: #2d201a; }
 .victory-film .secondary:hover { background: #423c32; }
 
 @media (max-width: 850px) {
@@ -896,7 +857,7 @@ canvas:focus-visible { outline: 2px solid #eed2a8; outline-offset: -3px; }
 
 @media (max-width: 470px) {
   .reader:has(#frame[data-mode="epilogue"]) #chapter-name { display: none; }
-  .epilogue-portrait { width: 52%; }
+  #frame[data-mode="victory-film"] { background-position: center, 36% center; }
   .sound-button { min-height: 36px; padding-inline: 8px; font-size: .73rem; }
   .overview-header h1 { font-size: clamp(1.5rem, 6.3vw, 2rem); }
   .overview-date { font-size: .73rem; }

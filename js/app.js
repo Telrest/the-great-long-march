@@ -732,19 +732,12 @@
     const hero = element('header', 'epilogue-hero');
     const heading = element('h1', 'epilogue-hero-title', '长征的伟大意义');
     heading.tabIndex = -1;
-    const flagFrame = element('div', 'epilogue-flag');
-    const flag = element('img');
-    flag.src = 'assets/epilogue/party-flag.jpg';
-    flag.alt = '';
-    flagFrame.append(flag);
-    const portrait = element('img', 'epilogue-portrait');
-    portrait.src = 'assets/epilogue/mao-1936.jpg';
-    portrait.alt = '';
-    hero.append(flagFrame, portrait, heading, poemLines(LONG_MARCH_POEM, 'epilogue-poem'));
+    hero.append(heading);
 
-    const poemCredit = element('p', 'epilogue-poem-credit');
+    const poemCredit = element('div', 'epilogue-poem-credit');
     poemCredit.append('毛泽东《' + LONG_MARCH_POEM.title + '》节选',
-      poemSource('查看国家档案局公布的手迹 ↗', LONG_MARCH_POEM.source));
+      poemSource('查看国家档案局公布的手迹 ↗', LONG_MARCH_POEM.source),
+      poemLines(LONG_MARCH_POEM, 'epilogue-poem'));
 
     const card = element('article', 'epilogue-slide');
     const body = element('div', 'epilogue-body');
@@ -788,14 +781,8 @@
     const pages = element('span', 'epilogue-page', (index + 1) + ' / ' + EPILOGUE.length);
     pages.setAttribute('aria-label', '第 ' + (index + 1) + ' 页，共 ' + EPILOGUE.length + ' 页');
     navigation.append(back, pages, forward);
-    const credits = sourceList(['flag', 'license', 'portrait'], {
-      flag: ['党旗摄影 · 維基小霸王（裁切）', 'https://commons.wikimedia.org/wiki/File:建党百年_空中梯队飞行表演_党旗.jpg'],
-      license: ['党旗摄影许可 · CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'],
-      portrait: ['1936 年毛泽东肖像 · 埃德加·斯诺摄，《人民画报》刊载', 'https://commons.wikimedia.org/wiki/File:1967-10_红军时期的毛泽东.jpg'],
-    }, '背景图片出处');
-    credits.classList.add('epilogue-credits');
     const content = element('div', 'epilogue-content');
-    content.append(hero, poemCredit, card, speech, navigation, credits);
+    content.append(hero, poemCredit, card, speech, navigation);
     frame.replaceChildren(
       poemLines(LONG_MARCH_POEM, 'epilogue-poem-side'),
       content,
