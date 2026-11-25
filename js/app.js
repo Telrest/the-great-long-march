@@ -735,9 +735,8 @@
     hero.append(heading);
 
     const poemCredit = element('div', 'epilogue-poem-credit');
-    poemCredit.append('毛泽东《' + LONG_MARCH_POEM.title + '》节选',
-      poemSource('查看国家档案局公布的手迹 ↗', LONG_MARCH_POEM.source),
-      poemLines(LONG_MARCH_POEM, 'epilogue-poem'));
+    poemCredit.append('毛泽东《' + LONG_MARCH_POEM.title + '》',
+      poemSource('查看国家档案局公布的手迹 ↗', LONG_MARCH_POEM.source));
 
     const card = element('article', 'epilogue-slide');
     const body = element('div', 'epilogue-body');
@@ -782,12 +781,8 @@
     pages.setAttribute('aria-label', '第 ' + (index + 1) + ' 页，共 ' + EPILOGUE.length + ' 页');
     navigation.append(back, pages, forward);
     const content = element('div', 'epilogue-content');
-    content.append(hero, poemCredit, card, speech, navigation);
-    frame.replaceChildren(
-      poemLines(LONG_MARCH_POEM, 'epilogue-poem-side'),
-      content,
-      poemLines(LONG_MARCH_POEM_CLOSING, 'epilogue-poem-side'),
-    );
+    content.append(poemCredit, card, speech, navigation);
+    frame.replaceChildren(hero, poemLines(LONG_MARCH_POEM, 'epilogue-poem'), content);
     document.title = slide.title + ' · 长征模拟器';
     window.scrollTo(0, 0);
     (index === 0 ? heading : title).focus({ preventScroll: true });

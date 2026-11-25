@@ -44,7 +44,7 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
 .cover-content {
   width: min(100%, 1550px);
   margin-inline: auto;
-  padding: 10vh clamp(26px, 8vw, 125px) 14vh;
+  padding: 10vh clamp(22px, 6.6vw, 105px) 17vh;
 }
 
 .cover-date {

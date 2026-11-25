@@ -21,11 +21,11 @@ const JOURNEY_POEMS = {
 
 const LONG_MARCH_POEM = {
   title: '七律·长征',
-  lines: ['红军不怕远征难，', '万水千山只等闲。'],
+  lines: [
+    '红军不怕远征难，', '万水千山只等闲。',
+    '五岭逶迤腾细浪，', '乌蒙磅礴走泥丸。',
+    '金沙水拍云崖暖，', '大渡桥横铁索寒。',
+    '更喜岷山千里雪，', '三军过后尽开颜。',
+  ],
   source: 'https://www.saac.gov.cn/zt/2013-10/19/content_29044.htm',
-};
-
-const LONG_MARCH_POEM_CLOSING = {
-  lines: ['更喜岷山千里雪，', '三军过后尽开颜。'],
-  source: 'https://www.cppcc.gov.cn/zxxw/yw/tpyw/202610/t20261020_908416.html',
 };
