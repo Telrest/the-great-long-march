@@ -1,10 +1,4 @@
 const JOURNEY_POEMS = {
-  soviet: {
-    title: '清平乐·会昌',
-    lines: ['踏遍青山人未老，', '风景这边独好。'],
-    note: '1934 年夏，中央苏区形势日益紧张，毛泽东登上会昌山，写下这首词。',
-    source: 'https://www.jxdy.gov.cn/dyxzf/gfysy/202407/eb80e9147efe43bdabc58356df33510b.shtml',
-  },
   chishui: {
     title: '忆秦娥·娄山关',
     lines: ['雄关漫道真如铁，', '而今迈步从头越。'],

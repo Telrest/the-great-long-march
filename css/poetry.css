@@ -100,22 +100,25 @@
   }
 
   .epilogue-poem-side {
+    --poem-panel-height: min(26.25rem, 49dvh);
     position: sticky;
-    top: 32px;
+    top: calc((100dvh - var(--poem-panel-height)) / 2);
     align-self: start;
     justify-self: center;
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     justify-content: center;
     gap: .32em;
     width: min(100%, 174px);
-    margin: 42px 0 0;
-    padding: 30px 4px 34px;
+    height: var(--poem-panel-height);
+    margin: 0;
+    padding: 0 4px;
     border: 1px solid #ddac7559;
     background: linear-gradient(170deg, #482719ee, #341a15bd);
     color: #f4d1a2;
     text-shadow: 0 2px 5px #25100e;
-    font: 400 clamp(1.8rem, 2.9vw, 2.56rem)/1 "Ma Shan Zheng", KaiTi, var(--serif);
+    font: 400 min(2.9vw, 4.6dvh, 2.56rem)/1 "Ma Shan Zheng", KaiTi, var(--serif);
     letter-spacing: .08em;
   }
 }
